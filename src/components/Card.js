@@ -1,15 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCodeBranch, faStar } from "@fortawesome/free-solid-svg-icons";
 
-export default Card = (props)=>{
-    const repos = this.props.repos
-    const arr = repos.map(repo =>{
-        <div >
-            <p>{repo.name}</p>
-            <p>{repo.forks}</p>
+class Card extends Component {
+  render() {
+    const repo = this.props.repo;
+    return (
+      <div className="card" key={repo.id}>
+        <p id="repo-name">{repo.name}</p>
+        <div className="repo-icons">
+          <div className="inline-counts">
+            <FontAwesomeIcon icon={faCodeBranch} className="icon" />
+            {repo.forks}
+          </div>
+          <div className="inline-counts">
+            <FontAwesomeIcon icon={faStar} className="icon" />
+            {repo.stargazers_count}
+          </div>
         </div>
-    });
-
-    return(
-        {arr}
+        {repo.description ? (
+          <p>
+            {repo.description.slice(0, 70)}
+            {repo.description.length > 70 ? <span>...</span> : null}
+          </p>
+        ) : (
+          <p>(no description)</p>
+        )}
+      </div>
     );
+  }
 }
+export default Card;
