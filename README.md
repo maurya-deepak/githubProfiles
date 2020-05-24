@@ -1,1 +1,13 @@
-This is a reactJs project to use it clone this repository and go to github-profiles folder and run "npm start" command without quote.It will start running on your localhost. 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.  
