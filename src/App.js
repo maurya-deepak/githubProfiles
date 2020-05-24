@@ -7,6 +7,7 @@ import "./App.css";
 import { trackPromise } from "react-promise-tracker";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
+import Pagination from "./components/Pagination";
 
 class App extends Component {
   state = {
@@ -19,17 +20,19 @@ class App extends Component {
     followers: 0,
     following: 0,
     repos: [],
-    noUser: false
+    noUser: false,
+    currentPage: 1,
+    reposPerPage: 6,
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     event.preventDefault();
 
     this.setState({
-      inputValue: event.target.value
+      inputValue: event.target.value,
     });
   };
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const url = "https://api.github.com/users/" + this.state.inputValue;
     const starred_repos_url =
@@ -40,7 +43,7 @@ class App extends Component {
     trackPromise(
       axios
         .get(url)
-        .then(response => {
+        .then((response) => {
           const data = response.data;
           this.setState({
             noUser: false,
@@ -50,20 +53,20 @@ class App extends Component {
             public_repos: data.public_repos,
             followers: data.followers,
             following: data.following,
-            inputValue: ""
+            inputValue: "",
           });
           if (this.state.public_repos > 0) {
-            axios.get(starred_repos_url).then(response => {
+            axios.get(starred_repos_url).then((response) => {
               if (response.data) {
                 this.setState({
-                  starred_repos: response.data
+                  starred_repos: response.data,
                 });
               }
               if (this.state.starred_repos.length === 0) {
-                axios.get(public_repos_url).then(response => {
+                axios.get(public_repos_url).then((response) => {
                   if (response.data) {
                     this.setState({
-                      repos: response.data
+                      repos: response.data,
                     });
                   }
                 });
@@ -71,14 +74,18 @@ class App extends Component {
             });
           }
         })
-        .catch(e => {
+        .catch((e) => {
           this.setState({
-            noUser: true
+            noUser: true,
           });
         })
     );
   };
-
+  paginate = (number) => {
+    this.setState({
+      currentPage: number,
+    });
+  };
   render() {
     const link = this.state.noUser
       ? null
@@ -88,11 +95,14 @@ class App extends Component {
       this.state.starred_repos.length > 0
         ? this.state.starred_repos
         : this.state.repos;
-    repos.sort(function(a, b) {
+    repos.sort(function (a, b) {
       return b.stargazers_count - a.stargazers_count;
     });
+    const indexOfLastRepo = this.state.currentPage * this.state.reposPerPage;
+    const indexOfFirstRepo = indexOfLastRepo - this.state.reposPerPage;
+    const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
 
-    const arr = repos.map(repo => <Card repo={repo} key={repo.id} />);
+    const arr = currentRepos.map((repo) => <Card repo={repo} key={repo.id} />);
 
     return (
       <div className="container">
@@ -109,11 +119,17 @@ class App extends Component {
             <input type="submit" value="search" title="search" />
           </div>
         </form>
-
         <div className="main-content">
           {this.state.noUser ? <UserNotFound /> : null}
           <Profile profile={this.state} repos={repos.length} />
-          <div className="repos">{arr}</div>
+          <div>
+            <div className="repos">{arr}</div>
+            <Pagination
+              reposPerPage={this.state.reposPerPage}
+              totalrepos={repos.length}
+              paginate={this.paginate}
+            />
+          </div>
         </div>
       </div>
     );

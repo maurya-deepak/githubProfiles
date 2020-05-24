@@ -1,166 +1,187 @@
-*{
-    margin:0;
-    padding: 0;
-    font-family: 'Cardo', serif;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cardo", serif;
 }
-body{
-    margin:0 10%;
-    background:#121212;
-    color:#FFF;
+body {
+  margin: 0 10%;
+  background: #121212;
+  color: #fff;
 }
-.loading{
-    width:100%;
-    height:100vh;
-    background-color: #27272749;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loading {
+  width: 100%;
+  height: 100vh;
+  background-color: #27272749;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.header{
-    margin:30px 0px;
-    display: flex;
-    justify-content: space-around;
+.header {
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-around;
 }
-.header h1{
-    font-size: 50px;
+.header h1 {
+  font-size: 50px;
 }
-.header button{
-    margin-top: 20px;
-    width: 40px;
-    height: 40px;
-    background-color: #1DB954;
-    color:#fff;
-    border:0;
-    font-size: 18px;
-    text-transform: capitalize;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 1px 1px 20px #272727e0,-1px -1px 20px #474747;
+.header button {
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #1db954;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 1px 1px 20px #272727e0, -1px -1px 20px #474747;
 }
-.header button a{
-    color:#FFF;
+.header button a {
+  color: #fff;
 }
-.search{
-    text-align: center;
+.search {
+  text-align: center;
 }
-.search input[type='text']{
-    padding: 10px 5px;
-    width:30%;
-    border:0;
-    font-size: 18px;
-    border-radius: 5px 0px 0px 5px;
-    
+.search input[type="text"] {
+  padding: 10px 5px;
+  width: 30%;
+  border: 0;
+  font-size: 18px;
+  border-radius: 5px 0px 0px 5px;
 }
-.search input[type='submit']{
-    padding:10px 30px;
-    background-color: #1DB954;
-    color:#fff;
-    border:0;
-    font-size: 18px;
-    text-transform: capitalize;
-    border-radius: 0px 5px 5px 0px;
-    cursor: pointer;
+.search input[type="submit"] {
+  padding: 10px 30px;
+  background-color: #1db954;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+  text-transform: capitalize;
+  border-radius: 0px 5px 5px 0px;
+  cursor: pointer;
 }
-.main-content{
-    margin-top:30px;
-    display: flex
+.main-content {
+  margin-top: 30px;
+  display: flex;
 }
 
-.profile-section{
-    width:250px;
+.profile-section {
+  width: 250px;
 }
-.profile-section .image-with-name img{
-    width:100%;
-    height:100%;
-    border:0;
-    border-radius: 5px 5px 0px 0px;
-    display: block;
+.profile-section .image-with-name img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 5px 5px 0px 0px;
+  display: block;
 }
-.profile-section .image-with-name p{
-    background-color: #1DB954;
-    text-align: center;
-    padding: 10px;
-    color:#FFF;
-    font-size: 18px;
-    border-radius: 0px 0px 5px 5px;
+.profile-section .image-with-name p {
+  background-color: #1db954;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 0px 0px 5px 5px;
 }
-.icon-row{
-    display: flex;
-    padding:2px 0px;
-    justify-content: space-between;
+.icon-row {
+  display: flex;
+  padding: 2px 0px;
+  justify-content: space-between;
 }
-.other-details{
-    margin-top:20px;
+.other-details {
+  margin-top: 20px;
 }
-.repos{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 20px;
-    margin:0px 0px 30px 30px;
+.repos {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  margin: 0px 0px 30px 30px;
 }
-.card{
-    width:350px; 
-    height: 138px;
-    background:#272727;
-    padding: 20px 10px;
-    border-radius: 5px;
-    box-sizing: border-box;
+.card {
+  width: 350px;
+  height: 138px;
+  background: #272727;
+  padding: 20px 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
-#repo-name{
-    text-transform: capitalize;
+#repo-name {
+  text-transform: capitalize;
 }
-.repo-icons{
-    display: flex;
-    padding: 5px 0px;
+.repo-icons {
+  display: flex;
+  padding: 5px 0px;
 }
-.inline-counts{
-    padding-right: 20px;
+.inline-counts {
+  padding-right: 20px;
 }
-.icon{
-    color:#1DB954;
-    margin: 0px 10px 0px 0px;
+.icon {
+  color: #1db954;
+  margin: 0px 10px 0px 0px;
 }
+
+.pagination {
+  margin: 10px 0px 30px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .list-item {
+  list-style: none;
+  margin: 15px 0px;
+}
+.pagination .list-item a {
+  color: #fff;
+  text-decoration: none;
+  
+  padding: 5px 15px;
+  border: 1px solid #1db954;
+  margin: 0px 5px;
+  font-size: 22px;
+}
+
 @media only screen and (max-width: 1124px) {
-    .header h1{
-        font-size: 28px;
-    }
-    .header button{
-        margin-top: 0
-    }
-    .search input[type="text"]{
-        width:60%;
-        padding: 5px;
-    }
-    .search input[type="submit"] {
-        padding:5px;
-    }
-    .main-content{
-        display: block;
-    }
-    .profile-section {
-        width: 288px;
-    }
-    .repos{
-        grid-template-columns:auto;
-        margin: 15px 0px 15px 0px;
-    }
-    .card{
-        width: inherit;
-    }
+  .header h1 {
+    font-size: 28px;
   }
-  @media only screen and (max-width: 360px) {
-    body{
-        margin:0 5%;
-    }
-    .search input[type="text"]{
-        width: 60%;
-        padding: 5px;
-    }
-    .profile-section {
-        width: inherit;
-    }
+  .header button {
+    margin-top: 0;
   }
+  .search input[type="text"] {
+    width: 60%;
+    padding: 5px;
+  }
+  .search input[type="submit"] {
+    padding: 5px;
+  }
+  .main-content {
+    display: block;
+  }
+  .profile-section {
+    width: 288px;
+  }
+  .repos {
+    grid-template-columns: auto;
+    margin: 15px 0px 15px 0px;
+  }
+  .card {
+    width: inherit;
+  }
+}
+@media only screen and (max-width: 360px) {
+  body {
+    margin: 0 5%;
+  }
+  .search input[type="text"] {
+    width: 60%;
+    padding: 5px;
+  }
+  .profile-section {
+    width: inherit;
+  }
+}
