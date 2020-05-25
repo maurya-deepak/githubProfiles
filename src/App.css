@@ -48,11 +48,15 @@ body {
   text-align: center;
 }
 .search input[type="text"] {
-  padding: 10px 5px;
+  padding: 10px 8px;
   width: 30%;
   border: 0;
   font-size: 18px;
   border-radius: 5px 0px 0px 5px;
+}
+.search input:focus{
+  outline: 2px solid #1db954;
+  outline-offset: -2px;
 }
 .search input[type="submit"] {
   padding: 10px 30px;
@@ -138,7 +142,6 @@ body {
 .pagination .list-item a {
   color: #fff;
   text-decoration: none;
-  
   padding: 5px 15px;
   border: 1px solid #1db954;
   margin: 0px 5px;
