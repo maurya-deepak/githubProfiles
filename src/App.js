@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Loading from "./components/Loading.js";
-import Card from "./components/Card";
 import UserNotFound from "./components/UserNotFound";
 import "./App.css";
 import { trackPromise } from "react-promise-tracker";
 import Profile from "./components/Profile";
 import Header from "./components/Header";
-import Pagination from "./components/Pagination";
+import Sort from "./components/Utils/sort";
+import MakeCard from "./components/Utils/makeCard";
 
 class App extends Component {
   state = {
@@ -62,13 +62,12 @@ class App extends Component {
                   starred_repos: response.data,
                 });
               }
-              if (this.state.starred_repos.length === 0) {
-                axios.get(public_repos_url).then((response) => {
-                  if (response.data) {
-                    this.setState({
-                      repos: response.data,
-                    });
-                  }
+            });
+
+            axios.get(public_repos_url).then((response) => {
+              if (response.data) {
+                this.setState({
+                  repos: response.data,
                 });
               }
             });
@@ -91,18 +90,17 @@ class App extends Component {
       ? null
       : "https://github.com/" + this.state.username;
 
-    const repos =
-      this.state.starred_repos.length > 0
-        ? this.state.starred_repos
-        : this.state.repos;
-    repos.sort(function (a, b) {
-      return b.stargazers_count - a.stargazers_count;
-    });
-    const indexOfLastRepo = this.state.currentPage * this.state.reposPerPage;
-    const indexOfFirstRepo = indexOfLastRepo - this.state.reposPerPage;
-    const currentRepos = repos.slice(indexOfFirstRepo, indexOfLastRepo);
 
-    const arr = currentRepos.map((repo) => <Card repo={repo} key={repo.id} />);
+    let star_repos = this.state.starred_repos;
+    let star_repos_arr = [];
+    if (star_repos.length > 0) {
+      star_repos = Sort(star_repos);
+      star_repos_arr = MakeCard(star_repos);
+    }
+
+    let public_repos = this.state.repos;
+    public_repos = Sort(public_repos);
+    const public_repo_arr = MakeCard(public_repos);
 
     return (
       <div className="container">
@@ -121,14 +119,20 @@ class App extends Component {
         </form>
         <div className="main-content">
           {this.state.noUser ? <UserNotFound /> : null}
-          <Profile profile={this.state} repos={repos.length} />
+          <Profile profile={this.state} repos={public_repos.length} />
           <div>
-            <div className="repos">{arr}</div>
-            <Pagination
-              reposPerPage={this.state.reposPerPage}
-              totalrepos={repos.length}
-              paginate={this.paginate}
-            />
+            {star_repos_arr.length > 0 ? (
+              <div>
+                <h3 className="repo-headline">Starred repositories:</h3>
+                <div className="repos">{star_repos_arr}</div>
+              </div>
+            ) : null}
+            {public_repo_arr.length > 0 ? (
+              <div>
+                <h3 className="repo-headline">Public repositories:</h3>
+                <div className="repos">{public_repo_arr}</div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

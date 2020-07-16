@@ -99,6 +99,9 @@ body {
 .other-details {
   margin-top: 20px;
 }
+.repo-headline{
+  padding: 5px 10px;
+}
 .repos {
   display: grid;
   grid-template-columns: auto auto;
