@@ -1,4 +1,4 @@
-# Demo available [here](https://vercel.com/deepakmauryamd/github-profiles).
+# Demo available [here](https://github-profiles-nine.vercel.app/).
 
 ---
 
