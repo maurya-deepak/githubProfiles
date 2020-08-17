@@ -23,7 +23,7 @@ body {
 .header {
   margin: 30px 0px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .header h1 {
   font-size: 50px;
@@ -50,19 +50,21 @@ body {
 .search input[type="text"] {
   padding: 10px 8px;
   width: 30%;
-  border: 0;
-  font-size: 18px;
+  font-size: 1.125rem;
   border-radius: 5px 0px 0px 5px;
+  border:2px solid rgb(255, 255, 255);
+  letter-spacing: 2px;
+  font-weight: 900;
 }
-.search input:focus{
-  outline: 2px solid #1db954;
-  outline-offset: -2px;
+.search input:focus, 
+.search input:active{
+  border: 2px solid #1db954;
 }
 .search input[type="submit"] {
   padding: 10px 30px;
   background-color: #1db954;
   color: #fff;
-  border: 0;
+  border: 2px solid #1db954;
   font-size: 18px;
   text-transform: capitalize;
   border-radius: 0px 5px 5px 0px;
@@ -100,7 +102,8 @@ body {
   margin-top: 20px;
 }
 .repo-headline{
-  padding: 5px 10px;
+  padding: 0 0 20px 30px;
+  font-size: 1.5rem;
 }
 .repos {
   display: grid;
@@ -131,27 +134,8 @@ body {
   margin: 0px 10px 0px 0px;
 }
 
-.pagination {
-  margin: 10px 0px 30px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-.pagination .list-item {
-  list-style: none;
-  margin: 15px 0px;
-}
-.pagination .list-item a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 15px;
-  border: 1px solid #1db954;
-  margin: 0px 5px;
-  font-size: 22px;
-}
 
-@media only screen and (max-width: 1124px) {
+@media only screen and (max-width: 1154px) {
   .header h1 {
     font-size: 28px;
   }
@@ -178,6 +162,11 @@ body {
   .card {
     width: inherit;
   }
+  .repo-headline{
+    padding: 5px;
+    font-size: 1.5rem;
+  }
+
 }
 @media only screen and (max-width: 360px) {
   body {
@@ -189,5 +178,9 @@ body {
   }
   .profile-section {
     width: inherit;
+  }
+  .repo-headline{
+    padding: 5px;
+    font-size: 1.5rem;
   }
 }

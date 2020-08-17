@@ -20,9 +20,7 @@ class App extends Component {
     followers: 0,
     following: 0,
     repos: [],
-    noUser: false,
-    currentPage: 1,
-    reposPerPage: 6,
+    noUser: false
   };
 
   handleInputChange = (event) => {
@@ -80,11 +78,7 @@ class App extends Component {
         })
     );
   };
-  paginate = (number) => {
-    this.setState({
-      currentPage: number,
-    });
-  };
+
   render() {
     const link = this.state.noUser
       ? null
