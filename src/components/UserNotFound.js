@@ -2,7 +2,7 @@ import React from "react";
 
 const UserNotFound = () => {
   return (
-    <div>
+    <div className="notfound-wrapper" >
       <p>User not found.</p>
     </div>
   );
