@@ -1,0 +1,59 @@
+.skeleton{
+    background: rgba(146, 146, 146, 0.863);
+    margin: 10px 0;
+    border-radius: 4px;
+}
+.skeleton.text{
+    width:100%;
+    height:12px;
+}
+.skeleton.title{
+    width:50%;
+    height:20px;
+    margin-bottom: 15px;
+}
+.skeleton.avatar{
+    width:250px;
+    height:300px;
+    border-radius: 10px;
+    margin-top:0;
+}
+.skeleton-profile{
+    width:250px;
+    background: #272727;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.skeleton-wrapper{
+    position: relative;
+    overflow: hidden;
+}
+.shimmer-wrapper {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    animation:loading 2.5s infinite;
+}
+
+.shimmer{
+    width:50%;
+    height: 100%;
+    background:rgba(255,255,255,0.05);
+    transform:skewX(-20deg);
+    box-shadow: 0 0 30px 30px rgba(255,255,255,0.05);
+}
+
+@keyframes loading{
+    0%{
+        transform:translateX(-150%);
+    }
+    50%{
+        transform:translateX(-60%);
+    }
+    100%{
+        transform:translateX(150%);
+    }
+}
