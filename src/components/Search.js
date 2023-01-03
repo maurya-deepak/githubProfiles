@@ -18,7 +18,7 @@ const Search = () => {
     setInputVal(e.target.value);
     if (searchText !== "") {
       setSearchText("");
-    }if(userNotFound){
+    } if (userNotFound) {
       setUserNotFound(false);
     }
   };
@@ -37,9 +37,10 @@ const Search = () => {
           const profileUrl = `https://api.github.com/users/${searchText}`;
           const starredReposUrl = `https://api.github.com/users/${searchText}/starred`;
           const publicReposUrl = `https://api.github.com/users/${searchText}/repos`;
-
-          const result = await axios.get(profileUrl);
+          setPublicRepos(null);
+          setStarredRepos(null);
           setIsLoading(true);
+          const result = await axios.get(profileUrl);
           if (result.data !== null && result.data.public_repos > 0) {
             setProfile(result.data);
 
@@ -83,7 +84,7 @@ const Search = () => {
           starredRepos={starredRepos}
         />
       ) : null}
-      {isLoading && searchText !=="" && <Skeleton/>}
+      {isLoading && searchText !=="" && <Skeleton />}
     </>
   );
 };
