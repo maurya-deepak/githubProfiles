@@ -1,17 +1,18 @@
-import React from "react";
-import Sort from "./Utils/sort";
-import MakeCard from "./Utils/makeCard";
+import React, { memo } from "react";
+import { sort } from "../utils/sort";
+import Card from "./Card";
 
-const DisplayRepo = ({type, repos})=>{
-    const sortedRepos = Sort(repos);
-    const repoCards = MakeCard(sortedRepos);
-    
-    return(
+const DisplayRepo = memo(({ type, repos }) => {
+    const getRepoCards = repository =>
+        repository.map((repo) => <Card repo={repo} key={repo.id} />);
+    const sortedRepos = sort(repos);
+    return (
         <div>
             <h3 className="repo-headline">{type} repositories:</h3>
-            <div className="repos">{repoCards}</div>
+            <div className="repos">{getRepoCards(sortedRepos)}</div>
         </div>
     );
-}
+});
 
+DisplayRepo.displayName = "DisplayRepo";
 export default DisplayRepo;

@@ -1,51 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Result from "./Result";
 import UserNotFound from "./UserNotFound";
 import Skeleton from "../skeletons/Skeleton";
+import { getProfileUrl, getPublicRepoUrl, getStarredRepoUrl } from "../utils/urls";
 
 const Search = () => {
-  const [inputVal, setInputVal] = useState("");
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [profile, setProfile] = useState(null);
   const [publicRepos, setPublicRepos] = useState(null);
   const [starredRepos, setStarredRepos] = useState(null);
   const [userNotFound, setUserNotFound] = useState(false);
+  const [prevInputValue, setPrevInputValue] = useState("");
 
   const handleInput = (e) => {
     e.preventDefault();
-    setInputVal(e.target.value);
-    if (searchText !== "") {
-      setSearchText("");
-    } if (userNotFound) {
+    setSearchText(e.target.value);
+    if (userNotFound) {
       setUserNotFound(false);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputVal !== "") {
-      setSearchText(inputVal);
+    if (searchText !== "" && searchText !== prevInputValue) {
+      setPrevInputValue(searchText);
+      fetchProfileDetails();
     }
   };
 
-  useEffect(() => {
+  const fetchProfileDetails = () => {
     (async () => {
       if (searchText !== "") {
         try {
-          const profileUrl = `https://api.github.com/users/${searchText}`;
-          const starredReposUrl = `https://api.github.com/users/${searchText}/starred`;
-          const publicReposUrl = `https://api.github.com/users/${searchText}/repos`;
           setPublicRepos(null);
           setStarredRepos(null);
           setIsLoading(true);
-          const result = await axios.get(profileUrl);
+          const result = await axios.get(getProfileUrl(searchText));
           if (result.data !== null && result.data.public_repos > 0) {
             setProfile(result.data);
 
-            const publicReposResult = await axios.get(publicReposUrl);
-            const starredReposResult = await axios.get(starredReposUrl);
+            const publicReposResult = await axios.get(getPublicRepoUrl(searchText));
+            const starredReposResult = await axios.get(getStarredRepoUrl(searchText));
 
             setPublicRepos(publicReposResult.data);
             setStarredRepos(starredReposResult.data);
@@ -60,8 +57,11 @@ const Search = () => {
         }
       }
     })();
-  }, [searchText]);
+  }
 
+  const isDataAvailable = () => {
+    return profile !== null && publicRepos !== null && starredRepos !== null;
+  }
   return (
     <>
       <div className="search">
@@ -69,22 +69,23 @@ const Search = () => {
           <input
             type="text"
             onChange={handleInput}
-            value={inputVal}
+            value={searchText}
             placeholder="Github username"
           />
           <input type="submit" value="search" title="search" />
         </form>
       </div>
-      {userNotFound ? (
+      {userNotFound && (
         <UserNotFound />
-      ) : profile !== null && publicRepos !== null && starredRepos !== null ? (
+      )}
+      {!userNotFound && !isLoading && isDataAvailable() && (
         <Result
           profile={profile}
           publicRepos={publicRepos}
           starredRepos={starredRepos}
         />
-      ) : null}
-      {isLoading && searchText !=="" && <Skeleton />}
+      )}
+      {isLoading && searchText !== "" && <Skeleton />}
     </>
   );
 };

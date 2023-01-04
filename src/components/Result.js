@@ -3,13 +3,17 @@ import Profile from "./Profile";
 import DisplayRepo from "./DisplayRepo";
 
 const Result = ({ profile, publicRepos, starredRepos }) => {
+  const isPublicReposAvailable = publicRepos.length > 0;
+  const isStarredReposAvailable = starredRepos.length > 0;
   return (
     <div className="main-content">
       <Profile profile={profile} repos={publicRepos.length} />
-      <div>
-        {starredRepos.length > 0 ? <DisplayRepo type="Starred" repos={starredRepos} /> : null}
-        {publicRepos.length > 0 ? <DisplayRepo type="Public" repos={publicRepos} /> : null}
-      </div>
+      {(isPublicReposAvailable || isStarredReposAvailable) &&
+        <div>
+          {isPublicReposAvailable && <DisplayRepo type="Starred" repos={starredRepos} />}
+          {isStarredReposAvailable && <DisplayRepo type="Public" repos={publicRepos} />}
+        </div>
+      }
     </div>
   );
 };
