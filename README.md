@@ -1,5 +1,5 @@
 # [Github Profiles](https://github-profiles-nine.vercel.app/)
-This project shows github profiles of github users. User can search github username and it will fetch details of that user from github and display on the page. It shows public as well private repository details.
+This project shows github profiles of github users. User can search github username and it will fetch details of that user from github and display on the page. It shows public as well private repository details and total stars and forks count also.
 
 ## How to run this project locally
 - Clone the repo and open it in code editor.
