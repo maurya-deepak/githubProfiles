@@ -1,18 +1,14 @@
-# Demo available [here](https://github-profiles-nine.vercel.app/).
+# [Github Profiles](https://github-profiles-nine.vercel.app/)
+This project shows github profiles of github users. User can search github username and it will fetch details of that user from github and display on the page. It shows public as well private repository details.
 
----
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.  
+## How to run this project locally
+- Clone the repo and open it in code editor.
+- In root directory run below command to download the required packages:-
+```
+npm install
+```
+- After completion of above command to run the project, run:-
+```
+npm start
+```
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
