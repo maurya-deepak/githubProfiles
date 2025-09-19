@@ -1,14 +1,54 @@
-# [Github Profiles](https://github-profiles-nine.vercel.app/)
-This project shows github profiles of github users. User can search github username and it will fetch details of that user from github and display on the page. It shows public as well private repository details and total stars and forks count also.
+# 👤 GitHub Profiles
 
-## How to run this project locally
-- Clone the repo and open it in code editor.
-- In root directory run below command to download the required packages:-
-```
-npm install
-```
-- After completion of above command to run the project, run:-
-```
-npm start
-```
-- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A simple yet powerful web application that lets you **search and explore GitHub user profiles**.  
+Just enter a GitHub username, and the app will fetch details from the **GitHub API** and display them in a clean, user-friendly interface.  
+
+---
+
+## ✨ Features
+- 🔍 Search any GitHub username  
+- 📂 View **public and private** repository details (if accessible with proper authentication)  
+- ⭐ Total stars count across repositories  
+- 🍴 Total forks count across repositories  
+- 📊 User details like name, bio, followers, following, and more  
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React.js  
+- **API:** GitHub REST API  
+- **Package Manager:** npm  
+
+---
+
+## ⚙️ How to Run This Project Locally
+
+Follow these steps to get started:
+
+### 1️⃣ Clone the Repository
+- Run: `git clone https://github.com/your-username/github-profiles.git`  
+- Navigate into the project: `cd github-profiles`
+
+### 2️⃣ Install Dependencies
+- In the root directory, install the required packages:  
+  `npm install`
+
+### 3️⃣ Start the Development Server
+- Run: `npm start`  
+- Open: [http://localhost:3000](http://localhost:3000) in your browser  
+
+The app will automatically reload if you make changes to the source code.
+
+---
+
+## 🚀 Future Enhancements
+- Add **pagination** for repositories  
+- Support **GitHub OAuth login** for private repos access  
+- Display **top languages** used by the user  
+- Improve UI with charts and analytics  
+
+---
+
+## 🎥 Live demo
+👉 *[Click here to view the live app](https://github-profiles-nine.vercel.app/)*  
+
